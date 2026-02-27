@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login Interativa</title>
+    <style>
+        /* Configurações Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 { color: #333; }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* O truque do Checkbox */
+        #login-toggle { display: none; }
+
+        .btn-login {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover { background-color: #0056b3; }
+
+        /* Mensagens de Feedback */
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none; /* Escondidas por padrão */
+        }
+
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+        /* Lógica de Validação via CSS */
+        
+        /* Se o checkbox NÃO estiver marcado e o botão for clicado (foco) */
+        #login-toggle:not(:checked) ~ .error {
+            display: block;
+        }
+
+        /* Se o checkbox ESTIVER marcado (simulando credenciais corretas) */
+        #login-toggle:checked ~ .success {
+            display: block;
+        }
+
+        /* Esconde o erro se o sucesso aparecer */
+        #login-toggle:checked ~ .error {
+            display: none;
+        }
+
+        .instrucao {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 15px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    
+    <input type="text" placeholder="Usuário">
+    <input type="password" placeholder="Senha">
+
+    <label class="instrucao">
+        <input type="checkbox" id="login-toggle"> Validar credenciais?
+    </label>
+
+    <button type="button" class="btn-login">Entrar</button>
+
+    <div class="message success">Acesso Concedido!</div>
+    <div class="message error">Acesso Negado!</div>
+</div>
+
+</body>
+</html>
